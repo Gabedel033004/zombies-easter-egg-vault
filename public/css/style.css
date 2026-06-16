@@ -1,0 +1,446 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0a0a0c;
+  --surface:      #111115;
+  --border:       #1f1f28;
+  --accent-bo1:   #e8a020;
+  --accent-bo2:   #2eb8d4;
+  --accent-bo3:   #b44cf0;
+  --text:         #d8d8e0;
+  --muted:        #6a6a80;
+  --white:        #ffffff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.logo span { color: var(--accent-bo1); }
+
+.disclaimer {
+  font-size: 0.7rem;
+  color: var(--muted);
+  max-width: 340px;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(ellipse at 50% 0%, #1a1420 0%, var(--bg) 70%);
+}
+
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent-bo1);
+}
+
+.hero p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── TABS ── */
+.tabs-wrapper {
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.tabs {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 1.1rem 1.6rem;
+  position: relative;
+  transition: color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.tab-btn:hover { color: var(--text); }
+
+.tab-btn.bo1.active { color: var(--accent-bo1); }
+.tab-btn.bo1.active::after { background: var(--accent-bo1); }
+
+.tab-btn.bo2.active { color: var(--accent-bo2); }
+.tab-btn.bo2.active::after { background: var(--accent-bo2); }
+
+.tab-btn.bo3.active { color: var(--accent-bo3); }
+.tab-btn.bo3.active::after { background: var(--accent-bo3); }
+
+/* ── CONTENT ── */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── GAME HEADER ── */
+.game-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.game-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+}
+
+.bo1 .game-badge { background: rgba(232,160,32,0.15); color: var(--accent-bo1); border: 1px solid rgba(232,160,32,0.3); }
+.bo2 .game-badge { background: rgba(46,184,212,0.15); color: var(--accent-bo2); border: 1px solid rgba(46,184,212,0.3); }
+.bo3 .game-badge { background: rgba(180,76,240,0.15); color: var(--accent-bo3); border: 1px solid rgba(180,76,240,0.3); }
+
+.game-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+
+.game-meta {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ── MAP GRID ── */
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.map-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.map-card:hover { background: #16161e; }
+
+.bo1 .map-card:hover { border-color: rgba(232,160,32,0.4); }
+.bo2 .map-card:hover { border-color: rgba(46,184,212,0.4); }
+.bo3 .map-card:hover { border-color: rgba(180,76,240,0.4); }
+
+.map-card-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
+
+.map-card-type {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.map-card-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.status-coming { color: var(--muted); }
+.bo1 .status-done { color: var(--accent-bo1); }
+.bo2 .status-done { color: var(--accent-bo2); }
+.bo3 .status-done { color: var(--accent-bo3); }
+
+/* ── COMING SOON ── */
+.coming-soon {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.coming-soon strong {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+/* ── 404 ── */
+.not-found {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.not-found h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--accent-bo1);
+  line-height: 1;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin: 1rem 0 2rem;
+}
+
+.btn-home {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent-bo1);
+  padding: 0.7rem 1.6rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-home:hover { opacity: 0.85; }
+
+/* ── MAP DETAIL PAGE ── */
+.map-detail {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.map-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--text); }
+
+.map-header h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.map-info {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.map-info .game-badge {
+  background: rgba(232,160,32,0.15);
+  color: var(--accent-bo1);
+  border: 1px solid rgba(232,160,32,0.3);
+}
+
+.map-type {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.map-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.easter-egg-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+}
+
+.easter-egg-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.easter-egg-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.placeholder {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.placeholder strong {
+  color: var(--text);
+}
+
+/* ── MAP CARD LINK FIX ── */
+.map-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .disclaimer { display: none; }
+  .tab-btn { padding: 1rem 0.9rem; font-size: 0.85rem; }
+  .game-meta { display: none; }
+}

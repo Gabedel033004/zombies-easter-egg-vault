@@ -1,0 +1,50 @@
+<section class="hero">
+  <p class="hero-eyebrow">Complete Guide Collection</p>
+  <h1>Every <em>Easter Egg.</em><br>Every Map.</h1>
+  <p>Step-by-step walkthroughs for every Zombies easter egg from Black Ops 1 through Black Ops 3.</p>
+</section>
+
+<div class="tabs-wrapper">
+  <nav class="tabs" role="tablist">
+    {{#each games}}
+    <a
+      href="/game/{{id}}"
+      class="tab-btn {{id}}{{#if (eq id ../activeGame)}} active{{/if}}"
+      role="tab"
+      data-game="{{id}}"
+      aria-selected="{{#if (eq id ../activeGame)}}true{{else}}false{{/if}}"
+    >{{name}}</a>
+    {{/each}}
+  </nav>
+</div>
+
+<div class="content">
+  {{#each games}}
+  <div class="panel {{id}}{{#if (eq id ../activeGame)}} active{{/if}}" id="panel-{{id}}" role="tabpanel">
+    <div class="game-header">
+      <span class="game-badge">{{year}}</span>
+      <h2>{{name}}</h2>
+      <div class="game-meta">
+        Developer: {{developer}}<br>
+        {{platforms}}
+      </div>
+    </div>
+
+    <p class="section-label">Zombies Maps</p>
+    <div class="map-grid">
+      {{#each maps}}
+      <a href="/game/{{../id}}/map/{{id}}" class="map-card">
+        <div class="map-card-name">{{name}}</div>
+        <div class="map-card-type">{{mapType this}}</div>
+        <div class="map-card-status status-coming">— Guide coming soon</div>
+      </a>
+      {{/each}}
+    </div>
+
+    <div class="coming-soon">
+      <strong>Guides In Progress</strong>
+      Select a map above to view its easter egg walkthrough once guides are published.
+    </div>
+  </div>
+  {{/each}}
+</div>
