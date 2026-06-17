@@ -1,3 +1,13 @@
+const path = require('path');
+const fs = require('fs');
+
+// Helper function to load all maps from game folders
+function loadGameMaps(gameDir) {
+  const mapsPath = path.join(__dirname, 'maps', gameDir);
+  const mapFiles = fs.readdirSync(mapsPath).filter(f => f.endsWith('.js'));
+  return mapFiles.map(file => require(path.join(mapsPath, file)));
+}
+
 const games = [
   {
     id: "bo1",
@@ -6,14 +16,7 @@ const games = [
     developer: "Treyarch",
     platforms: "PC · PS3 · Xbox 360",
     accent: "#e8a020",
-    maps: [
-      { id: "kino-der-toten", name: "Kino der Toten",   type: "Zombies",          dlc: null,   status: "coming" },
-      { id: "five", name: '"Five"',           type: "Zombies",          dlc: null,   status: "coming" },
-      { id: "ascension", name: "Ascension",        type: "Zombies",          dlc: "DLC 1", status: "coming" },
-      { id: "call-of-the-dead", name: "Call of the Dead", type: "Zombies",          dlc: "DLC 2", status: "coming" },
-      { id: "shangri-la", name: "Shangri-La",       type: "Zombies",          dlc: "DLC 3", status: "coming" },
-      { id: "moon", name: "Moon",             type: "Zombies",          dlc: "DLC 4", status: "coming" },
-    ],
+    maps: loadGameMaps('bo1'),
   },
   {
     id: "bo2",
@@ -22,14 +25,7 @@ const games = [
     developer: "Treyarch",
     platforms: "PC · PS3 · Xbox 360 · Wii U",
     accent: "#2eb8d4",
-    maps: [
-      { id: "tranzit", name: "TranZit",          type: "Zombies",          dlc: null,    status: "coming" },
-      { id: "die-rise", name: "Die Rise",         type: "Zombies",          dlc: "DLC 1", status: "coming" },
-      { id: "mob-of-the-dead", name: "Mob of the Dead",  type: "Zombies",          dlc: "DLC 1", status: "coming" },
-      { id: "buried", name: "Buried",           type: "Zombies",          dlc: "DLC 2", status: "coming" },
-      { id: "origins", name: "Origins",          type: "Zombies",          dlc: "DLC 4", status: "coming" },
-      { id: "nuketown-zombies", name: "Nuketown Zombies", type: "Zombies",          dlc: "Bonus", status: "coming" },
-    ],
+    maps: loadGameMaps('bo2'),
   },
   {
     id: "bo3",
@@ -38,14 +34,7 @@ const games = [
     developer: "Treyarch",
     platforms: "PC · PS4 · Xbox One",
     accent: "#b44cf0",
-    maps: [
-      { id: "shadows-of-evil", name: "Shadows of Evil",   type: "Zombies",         dlc: null,    status: "coming" },
-      { id: "the-giant", name: "The Giant",         type: "Zombies",         dlc: "Bonus", status: "coming" },
-      { id: "der-eisendrache", name: "Der Eisendrache",   type: "Zombies",         dlc: "DLC 1", status: "coming" },
-      { id: "zetsubou-no-shima", name: "Zetsubou No Shima", type: "Zombies",         dlc: "DLC 2", status: "coming" },
-      { id: "gorod-krovi", name: "Gorod Krovi",       type: "Zombies",         dlc: "DLC 3", status: "coming" },
-      { id: "revelations", name: "Revelations",       type: "Zombies",         dlc: "DLC 4", status: "coming" },
-    ],
+    maps: loadGameMaps('bo3'),
   },
 ];
 

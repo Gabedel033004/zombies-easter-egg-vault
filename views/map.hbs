@@ -12,8 +12,12 @@
     <section class="easter-egg-section">
       <h2>Easter Egg Walkthrough</h2>
       <div class="easter-egg-body">
-        <p class="placeholder">Easter egg guide for <strong>{{map.name}}</strong> coming soon.</p>
-        <p class="placeholder">Add the easter egg steps and details here!</p>
+        {{#if map.content}}
+          {{{map.content}}}
+        {{else}}
+          <p class="placeholder">Easter egg guide for <strong>{{map.name}}</strong> coming soon.</p>
+          <p class="placeholder">Add the easter egg steps and details here in the map data!</p>
+        {{/if}}
       </div>
     </section>
   </div>
